@@ -1,6 +1,7 @@
 import React from 'react'
 import validator from "@rjsf/validator-ajv8";
-import Form from "@rjsf/core";
+import Form from "@rjsf/mui";
+import styles from "../styles/Form.module.css"
 
 export default function Signup() {
   const handleSubmit = ({ formData }) => {
@@ -9,29 +10,34 @@ export default function Signup() {
 
   const schema = {
     title: 'Registration Form',
+    description: 'Form description',
     type: 'object',
     properties: {
-      Name: {
+      name: {
         type: 'string',
         title: 'Name',
       },
       mobile: {
-        type: 'string',
+        type: 'number',
         title: 'Mobile',
       },
       email: {
         type: 'string',
-        title: 'email',
+        title: 'Email',
       }
     }
   }
+  const uiSchema = {
+
+  };
 
   return (
-    <div>
+    <div className={styles.formContainer}>
       <Form
         validator={validator}
         schema={schema}
         onSubmit={handleSubmit}
+        uiSchema={uiSchema}
       >
       </Form>
     </div >
